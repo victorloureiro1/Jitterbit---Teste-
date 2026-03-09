@@ -92,3 +92,21 @@ function authenticateToken(req, res, next) {
         next();
     });
 }
+// ==========================================
+// 4. ROTAS DA API
+// ==========================================
+
+/**
+ * @swagger
+ * /login:
+ * post:
+ * summary: Gera um token JWT para testes
+ * responses:
+ * 200:
+ * description: Retorna o token JWT
+ */
+app.post('/login', (req, res) => {
+    // Rota simplificada apenas para gerar um token e demonstrar o funcionamento do JWT
+    const token = jwt.sign({ user: 'tester' }, SECRET_KEY, { expiresIn: '1h' });
+    res.json({ token });
+});
